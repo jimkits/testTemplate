@@ -20,7 +20,7 @@ export class LoginPage extends BasePage {
         this.errorMessage = this.page.locator('.ulp-error-info.ulp-validator-error, .ulp-input-error-message').first();
     }
 
-    async typeUsername(username: string){
+    async typeUsername(username: string): Promise<this> {
         await test.step('type in the username', async () => {
             const usernameField = this.usernameField;
 
@@ -28,15 +28,19 @@ export class LoginPage extends BasePage {
             await usernameField.fill(username);
             await this.continueButton.click();
         });
+
+        return this;
     }
 
-    async typePassword(password: string){
+    async typePassword(password: string): Promise<this> {
         await test.step('type in the password', async () => {
             const passwordField = this.passwordField;
-            
+
             await expect(passwordField).toBeEditable({ timeout: 2000 });
             await passwordField.fill(password);
             await this.continueButton.click();
         });
+
+        return this;
     }
 }

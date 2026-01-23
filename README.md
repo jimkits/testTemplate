@@ -29,12 +29,7 @@ npm install
 
 ### 3. Install Playwright Browsers
 
-Chromium
-```bash
-npx playwright install chromium
-```
-
-Or to download all browsers:
+Download all browsers:
 ```bash
 npm run install:browsers
 ```
@@ -77,6 +72,12 @@ npm run test:debug
 npm run test:ui
 ```
 
+### Run Tests for a single project
+
+```bash
+npx playwright test --project=chromium
+```
+
 ### View Test Report
 
 After running tests, view the HTML report:
@@ -91,12 +92,34 @@ npm run report
 
 Key settings:
 - **Timeout:** 30 seconds per test
-- **Browser:** Chromium (Chrome)
+- **Browser:** Chromium (Chrome), Firefox, Webkit (Safari)
 - **Parallel execution:** Enabled for faster test runs
 - **Retries:** 2 retries on CI, 0 locally
 - **Reporters:** HTML, List, and JSON
 
-To run tests in other browsers (Firefox, Safari), uncomment the respective sections in `playwright.config.ts`.
+## Test Tagging
+
+Tests are tagged for selective execution:
+
+### Run Smoke Tests Only
+```bash
+npx playwright test --grep @smoke
+```
+
+### Run Regression Tests Only
+```bash
+npx playwright test --grep @regression
+```
+
+### Run All Tests Except Smoke
+```bash
+npx playwright test --grep-invert @smoke
+```
+
+### Available Tags
+- `@smoke` - Critical path tests (login success)
+- `@regression` - Full regression suite (validation tests)
+- `@security` - Security-focused tests (SQL injection)
 
 ## Troubleshooting
 
@@ -107,3 +130,19 @@ To run tests in other browsers (Firefox, Safari), uncomment the respective secti
 
 ### "Browser not found"
 - Refer to the appropriate section in README
+
+## Future Improvements
+
+The following enhancements are planned for future iterations:
+
+### CI/CD Pipeline
+- Add GitHub Actions workflow for automated test execution
+- Configure test runs on pull requests and merges to main
+- Add test result reporting and artifact storage
+- Set up scheduled nightly regression runs
+
+### Extended Test Coverage
+- Add logout functionality tests
+- Add "Forgot Password" flow tests
+- Add session persistence/timeout tests
+- Add "Remember Me" functionality tests

@@ -14,7 +14,7 @@ export class LandingPage extends BasePage {
         this.loginPageLink = this.getByQAId('login-hudl');
     }
     
-    async GoToLoginPage(){
+    async GoToLoginPage(): Promise<this> {
         await test.step('Click on the Log in dropdown menu', async () => {
             const loginButton = this.loginButton;
             await expect(loginButton).toBeVisible({ timeout: 2000 });
@@ -28,5 +28,7 @@ export class LandingPage extends BasePage {
 
             await expect(this.page).toHaveTitle('Log In', { timeout: 5000 });
         });
+
+        return this;
     }
 }
