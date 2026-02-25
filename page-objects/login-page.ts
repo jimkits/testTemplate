@@ -4,29 +4,23 @@ import { BasePage } from "./base-page";
 export class LoginPage extends BasePage {
     page: Page;
     usernameField: Locator;
-    continueButton: Locator;
     passwordField: Locator;
+    loginButton: Locator;
     errorMessage: Locator;
 
-    constructor (page: Page){
+    constructor(page: Page) {
         super(page);
         this.page = page;
 
-        this.usernameField = this.getById('username');
-        this.continueButton = this.page.getByText('Continue', { exact: true });
-        this.passwordField = this.getById('password');
-        // Username page uses .ulp-error-info.ulp-validator-error
-        // Password page uses .ulp-input-error-message
-        this.errorMessage = this.page.locator('.ulp-error-info.ulp-validator-error, .ulp-input-error-message').first();
+        this.usernameField = this.page.locator('input[placeholder="Username"]');
+        this.passwordField = this.page.locator('input[placeholder="Password"]');
+        this.loginButton = this.page.locator('button.login-button');
+        this.errorMessage = this.page.locator('.login-error');
     }
 
     async typeUsername(username: string): Promise<this> {
         await test.step('type in the username', async () => {
-            const usernameField = this.usernameField;
-
-            await expect(usernameField).toBeEditable({ timeout: 2000 });
-            await usernameField.fill(username);
-            await this.continueButton.click();
+            await this.usernameField.fill(username);
         });
 
         return this;
@@ -34,12 +28,24 @@ export class LoginPage extends BasePage {
 
     async typePassword(password: string): Promise<this> {
         await test.step('type in the password', async () => {
-            const passwordField = this.passwordField;
-
-            await expect(passwordField).toBeEditable({ timeout: 2000 });
-            await passwordField.fill(password);
-            await this.continueButton.click();
+            await this.passwordField.fill(password);
         });
+
+        return this;
+    }
+
+    async clickLogin(): Promise<this> {
+        await test.step('click the login button', async () => {
+            await this.loginButton.click();
+        });
+
+        return this;
+    }
+
+    async login(username: string, password: string): Promise<this> {
+        await this.typeUsername(username);
+        await this.typePassword(password);
+        await this.clickLogin();
 
         return this;
     }

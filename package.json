@@ -1,20 +1,7 @@
 {
-  "name": "hudl-login-tests",
+  "name": "dnd-ui-tests",
   "version": "1.0.0",
-  "description": "Automated login tests for Hudl.com using Playwright and TypeScript",
-  "main": "index.js",
-  "scripts": {
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:debug": "playwright test --debug",
-    "test:ui": "playwright test --ui",
-    "report": "playwright show-report",
-    "install:browsers": "playwright install chromium"
-  },
-  "keywords": ["playwright", "automation", "testing", "hudl"],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "description": "End-to-end tests for the Dungeons & Dragons UI using Playwright and TypeScript",
   "dependencies": {
     "dotenv": "^16.4.5"
   },

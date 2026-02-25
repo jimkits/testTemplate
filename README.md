@@ -1,16 +1,16 @@
 ## Overview
 
-This project contains end-to-end tests for the Hudl login flow, including:
-- Successful login with valid credentials
-- Username validation (empty, invalid format, SQL injection)
-- Password validation (empty, incorrect credentials, SQL injection)
-- Rate limiting handling for repeated failed login attempts
+This project contains end-to-end tests for the Dungeons & Dragons UI, including:
+- Authentication: login, logout, and redirect behaviour
+- Hero navigation: Fighter, Sorcerer, Cleric, Rogue
+- Monster navigation: Small, Medium, Large
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
 - npm (comes with Node.js)
-- A valid Hudl account with username and password
+- The DnD UI running on `http://localhost:3000`
+- The DnD API running on `http://localhost:5071`
 
 ## Setup Instructions
 
@@ -18,7 +18,7 @@ This project contains end-to-end tests for the Hudl login flow, including:
 
 ```bash
 git clone <repository-url>
-cd hudl
+cd dnd-ui-tests
 ```
 
 ### 2. Install Dependencies
@@ -29,9 +29,8 @@ npm install
 
 ### 3. Install Playwright Browsers
 
-Download all browsers:
 ```bash
-npm run install:browsers
+npx playwright install chromium
 ```
 
 ### 4. Configure Credentials
@@ -42,7 +41,13 @@ Create a `.env` file in the project root:
 cp .env.example .env
 ```
 
-Edit the `.env` file with your Hudl credentials:
+Edit the `.env` file with the DnD credentials:
+
+```env
+BASE_URL=http://localhost:3000
+DND_USERNAME=admin
+DND_PASSWORD=admin
+```
 
 **Important:** Never commit the `.env` file to version control. It's already included in `.gitignore`.
 
@@ -51,28 +56,28 @@ Edit the `.env` file with your Hudl credentials:
 ### Run All Tests (Headless)
 
 ```bash
-npm test
+npx playwright test
 ```
 
 ### Run Tests in Headed Mode
 
 ```bash
-npm run test:headed
+npx playwright test --headed
 ```
 
 ### Run Tests in Debug Mode
 
 ```bash
-npm run test:debug
+npx playwright test --debug
 ```
 
 ### Run Tests with UI Mode
 
 ```bash
-npm run test:ui
+npx playwright test --ui
 ```
 
-### Run Tests for a single project
+### Run a Single Project
 
 ```bash
 npx playwright test --project=chromium
@@ -80,10 +85,8 @@ npx playwright test --project=chromium
 
 ### View Test Report
 
-After running tests, view the HTML report:
-
 ```bash
-npm run report
+npx playwright show-report
 ```
 
 ## Configuration
@@ -92,10 +95,52 @@ npm run report
 
 Key settings:
 - **Timeout:** 30 seconds per test
-- **Browser:** Chromium (Chrome), Firefox, Webkit (Safari)
+- **Browser:** Chromium only
 - **Parallel execution:** Enabled for faster test runs
 - **Retries:** 2 retries on CI, 0 locally
 - **Reporters:** HTML, List, and JSON
+
+### Projects
+
+Two projects are defined:
+
+| Project | Purpose |
+|---------|---------|
+| `setup` | Runs `auth.setup.ts` first — logs in and verifies the logout button is visible |
+| `chromium` | Runs all tests after `setup` completes |
+
+The `chromium` project declares `dependencies: ['setup']`, so Playwright always validates the login flow before running the main test suite.
+
+## Authentication Strategy
+
+### Why `addInitScript` is used instead of `storageState`
+
+The DnD app stores its authenticated state in the browser's `sessionStorage`:
+
+```ts
+sessionStorage.setItem('loggedIn', 'true');
+```
+
+Playwright's built-in `storageState` mechanism only captures **cookies** and **localStorage** — it does not capture `sessionStorage`. As a result, saving and restoring the auth state via `storageState` alone has no effect for this app.
+
+To work around this, the hero and monster tests inject the session value directly before the page loads using `page.addInitScript`:
+
+```ts
+await page.addInitScript(() => {
+    sessionStorage.setItem('loggedIn', 'true');
+});
+await page.goto(baseUrl);
+```
+
+`addInitScript` runs before any page script executes, so React reads `loggedIn: "true"` from `sessionStorage` on mount and renders the authenticated layout without going through the login form.
+
+### Login tests
+
+Login tests need to start from an unauthenticated state. They override the project-level `storageState` to an empty value and do not call `addInitScript`, ensuring the app redirects to `/login` as expected:
+
+```ts
+test.use({ storageState: { cookies: [], origins: [] } });
+```
 
 ## Test Tagging
 
@@ -103,46 +148,27 @@ Tests are tagged for selective execution:
 
 ### Run Smoke Tests Only
 ```bash
-npx playwright test --grep @smoke
+npx playwright test --grep=smoke
 ```
 
 ### Run Regression Tests Only
 ```bash
-npx playwright test --grep @regression
-```
-
-### Run All Tests Except Smoke
-```bash
-npx playwright test --grep-invert @smoke
+npx playwright test --grep=regression
 ```
 
 ### Available Tags
-- `@smoke` - Critical path tests (login success)
-- `@regression` - Full regression suite (validation tests)
-- `@security` - Security-focused tests (SQL injection)
+- `@smoke` - Critical path tests
+- `@regression` - Full regression suite
 
 ## Troubleshooting
 
 ### "Environment variables must be set"
-- Ensure you've created a `.env` file with your credentials
-- Check that the `.env` file is in the project root directory
-- Make sure you're using `HUDL_USERNAME` and `HUDL_PASSWORD`, not `USERNAME` and `PASSWORD`
+- Ensure you've created a `.env` file based on `.env.example`
+- Check that `DND_USERNAME` and `DND_PASSWORD` are set
 
 ### "Browser not found"
-- Refer to the appropriate section in README
+- Run `npx playwright install chromium`
 
-## Future Improvements
-
-The following enhancements are planned for future iterations:
-
-### CI/CD Pipeline
-- Add GitHub Actions workflow for automated test execution
-- Configure test runs on pull requests and merges to main
-- Add test result reporting and artifact storage
-- Set up scheduled nightly regression runs
-
-### Extended Test Coverage
-- Add logout functionality tests
-- Add "Forgot Password" flow tests
-- Add session persistence/timeout tests
-- Add "Remember Me" functionality tests
+### Hero/monster tests fail immediately after the setup test
+- The DnD UI or API may not be running — start both services before running tests
+- Verify `BASE_URL` in `.env` matches where the UI is actually served

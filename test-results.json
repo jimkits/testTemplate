@@ -1,0 +1,811 @@
+{
+  "config": {
+    "configFile": "C:\\git\\dnd\\dnd-ui-tests\\playwright.config.ts",
+    "rootDir": "C:/git/dnd/dnd-ui-tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/git/dnd/dnd-ui-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "setup",
+        "name": "setup",
+        "testDir": "C:/git/dnd/dnd-ui-tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "/auth\\.setup\\.ts/"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/git/dnd/dnd-ui-tests/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/git/dnd/dnd-ui-tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "3way",
+    "version": "1.57.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "auth.setup.ts",
+      "file": "auth.setup.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "authenticate",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "setup",
+              "projectName": "setup",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 571,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "steps": [
+                    {
+                      "title": "type in the username",
+                      "duration": 41
+                    },
+                    {
+                      "title": "type in the password",
+                      "duration": 10
+                    },
+                    {
+                      "title": "click the login button",
+                      "duration": 15
+                    }
+                  ],
+                  "startTime": "2026-02-25T13:54:32.751Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "17e3fe6f4d9d8bd79c6b-60f085b113a677673906",
+          "file": "auth.setup.ts",
+          "line": 7,
+          "column": 6
+        }
+      ]
+    },
+    {
+      "title": "hero-tests.spec.ts",
+      "file": "hero-tests.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Hero Tests",
+          "file": "hero-tests.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User navigates to Fighter hero page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 616,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 61
+                        },
+                        {
+                          "title": "navigate to Fighter hero",
+                          "duration": 34
+                        },
+                        {
+                          "title": "verify Fighter hero page is displayed",
+                          "duration": 7
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:34.039Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2593d9498422e2488767-c00e88d8013e0f7b591e",
+              "file": "hero-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            },
+            {
+              "title": "User navigates to Sorcerer hero page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 265,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 62
+                        },
+                        {
+                          "title": "navigate to Sorcerer hero",
+                          "duration": 26
+                        },
+                        {
+                          "title": "verify Sorcerer hero page is displayed",
+                          "duration": 7
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:34.686Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2593d9498422e2488767-ff4780c001021e10db47",
+              "file": "hero-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            },
+            {
+              "title": "User navigates to Cleric hero page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 254,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 56
+                        },
+                        {
+                          "title": "navigate to Cleric hero",
+                          "duration": 31
+                        },
+                        {
+                          "title": "verify Cleric hero page is displayed",
+                          "duration": 6
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:34.961Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2593d9498422e2488767-b22fc087f936f9347beb",
+              "file": "hero-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            },
+            {
+              "title": "User navigates to Rogue hero page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 260,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 61
+                        },
+                        {
+                          "title": "navigate to Rogue hero",
+                          "duration": 31
+                        },
+                        {
+                          "title": "verify Rogue hero page is displayed",
+                          "duration": 6
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:35.225Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "2593d9498422e2488767-ff3845bb61d3eae3e42b",
+              "file": "hero-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login-tests.spec.ts",
+      "file": "login-tests.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Login Tests",
+          "file": "login-tests.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User is redirected to the login page when not authenticated",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 182,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "verify the user is on the login page",
+                          "duration": 16
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:35.496Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fef6f41e2e9b823c2987-c94f14111138f95450b4",
+              "file": "login-tests.spec.ts",
+              "line": 22,
+              "column": 9
+            },
+            {
+              "title": "User successfully logs in",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 238,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "type in the username",
+                          "duration": 34
+                        },
+                        {
+                          "title": "type in the password",
+                          "duration": 10
+                        },
+                        {
+                          "title": "click the login button",
+                          "duration": 20
+                        },
+                        {
+                          "title": "verify the user is on the home page",
+                          "duration": 16
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:35.691Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fef6f41e2e9b823c2987-eba6bc7d6e440b49feb5",
+              "file": "login-tests.spec.ts",
+              "line": 34,
+              "column": 9
+            },
+            {
+              "title": "User can logout after logging in",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 266,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "type in the username",
+                          "duration": 35
+                        },
+                        {
+                          "title": "type in the password",
+                          "duration": 11
+                        },
+                        {
+                          "title": "click the login button",
+                          "duration": 16
+                        },
+                        {
+                          "title": "click the logout button",
+                          "duration": 37
+                        },
+                        {
+                          "title": "verify the user is redirected to the login page",
+                          "duration": 3
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:35.937Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fef6f41e2e9b823c2987-3b60fa645ef2201042d3",
+              "file": "login-tests.spec.ts",
+              "line": 49,
+              "column": 9
+            },
+            {
+              "title": "User fails to login with username \"wronguser\" and password \"wrongpass\"",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 346,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "type in the username",
+                          "duration": 32
+                        },
+                        {
+                          "title": "type in the password",
+                          "duration": 9
+                        },
+                        {
+                          "title": "click the login button",
+                          "duration": 19
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:36.211Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fef6f41e2e9b823c2987-d77ad7aff89f12f6c3ef",
+              "file": "login-tests.spec.ts",
+              "line": 70,
+              "column": 13
+            },
+            {
+              "title": "User fails to login with username \"admin\" and password \"wrongpass\"",
+              "ok": true,
+              "tags": [
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 224,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "type in the username",
+                          "duration": 34
+                        },
+                        {
+                          "title": "type in the password",
+                          "duration": 10
+                        },
+                        {
+                          "title": "click the login button",
+                          "duration": 17
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:36.567Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "fef6f41e2e9b823c2987-61cb7b9207f11822e1c7",
+              "file": "login-tests.spec.ts",
+              "line": 70,
+              "column": 13
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "monster-tests.spec.ts",
+      "file": "monster-tests.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Monster Tests",
+          "file": "monster-tests.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "User navigates to Small monsters page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 251,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 58
+                        },
+                        {
+                          "title": "navigate to Small monsters",
+                          "duration": 29
+                        },
+                        {
+                          "title": "verify Small monsters page is displayed",
+                          "duration": 4
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:36.804Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3d73d560a0f405d6b69-b92d0800a1d9b4ca64bb",
+              "file": "monster-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            },
+            {
+              "title": "User navigates to Medium monsters page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 251,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 57
+                        },
+                        {
+                          "title": "navigate to Medium monsters",
+                          "duration": 26
+                        },
+                        {
+                          "title": "verify Medium monsters page is displayed",
+                          "duration": 5
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:37.065Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3d73d560a0f405d6b69-50718083ecb1eb94cbbb",
+              "file": "monster-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            },
+            {
+              "title": "User navigates to Large monsters page",
+              "ok": true,
+              "tags": [
+                "smoke",
+                "regression"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "steps": [
+                        {
+                          "title": "open the side navigation",
+                          "duration": 56
+                        },
+                        {
+                          "title": "navigate to Large monsters",
+                          "duration": 28
+                        },
+                        {
+                          "title": "verify Large monsters page is displayed",
+                          "duration": 4
+                        }
+                      ],
+                      "startTime": "2026-02-25T13:54:37.325Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "e3d73d560a0f405d6b69-0203b8b46077e69da58c",
+              "file": "monster-tests.spec.ts",
+              "line": 18,
+              "column": 13
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-02-25T13:54:31.692Z",
+    "duration": 5915.568000000001,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}
